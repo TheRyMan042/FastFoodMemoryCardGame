@@ -1,0 +1,124 @@
+/*Lets me load a custom font I found online*/
+@font-face {
+  font-family: 'Arial Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Arial Bold Italic'), url('ARIALBI.woff') format('woff');
+}
+
+body {
+  text-align: center;
+  /* background-color:aquamarine; Original color*/
+  background: linear-gradient(rgb(41, 255, 184),cyan);
+  background-attachment: fixed;
+}
+
+h1 {
+  font-size: 3rem;
+  font-family: 'Arial Bold Italic';
+}
+
+/*displays the game and highscore side by side*/
+.main-page {
+  display: flex;
+  justify-content: center;
+}
+
+#game {
+  justify-self: stretch;
+  /* margin-right: 110px; */
+  margin-right: 3%;
+}
+
+/*image of back of card and images of fast food places*/
+img {
+  width: 136px;
+  height: 200px;
+  /* border: 4px solid #8A93BD; Original color */
+  border: 4px solid black;
+  border-radius: 8px;
+  margin: 4px 8px;
+  padding: 8px;
+  background-color: white;
+}
+
+/*score board*/
+.high-score, .players-score, .end-of-game{
+  font-size: 2rem;
+  font-weight: bold;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/*"You Win" text*/
+.end-of-game {
+  font-size: 5rem;
+}
+
+#scores {
+  background-color: rgb(255, 151, 255);
+  border: 3px solid black;
+  width: 17rem;
+  min-width: 240px;
+}
+
+/*form*/
+/*font for whole page, except hearder*/
+form, #number-cards, .start-button, .play-again-button, .clear-highscore-button{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/*spacing for input and text*/
+form {
+  margin: 30px 0 15px 0;
+}
+
+/*Spacing between label and input*/
+#number-cards {
+  margin: 0 0 0 15px;
+}
+
+/*properties for all buttons*/
+.play-again-button, .start-button, .clear-highscore-button{
+  margin: 15px 0;
+  background-color: rgb(193, 193, 193);
+  border-radius: 6px;
+  border: none;
+  padding: 5px 10px;
+}
+
+/*for spacing the bottom elements*/
+.play-again-button, .clear-highscore-button {
+  margin: 15px 10px;
+}
+
+/*hovering properties for all buttons and inputs*/
+.play-again-button:hover, .start-button:hover, .clear-highscore-button:hover{
+  background-color: red;
+}
+
+#number-cards:hover{
+
+  background-color: rgb(227, 225, 225);
+  border: 2px solid red;
+  border-radius: 2px;
+}
+
+#number-cards:focus{
+  outline: none;
+  border: 2px solid red;
+  border-radius: 2px;
+}
+
+/*This is where I found how to use font-face*/
+/*
+-  https://www.youtube.com/watch?v=y2AlgMII1OU
+-  https://stackoverflow.com/questions/42561688/css-use-custom-font-ttf-from-folder
+-  https://www.w3schools.com/cssref/css3_pr_font-face_rule.php
+-  https://stackoverflow.com/questions/12144000/using-custom-fonts-using-css
+*/
+
+/*This the website i found the Arial font and the font-face kit*/
+/*
+-  https://font.download/font/arial#google_vignette
+*/
