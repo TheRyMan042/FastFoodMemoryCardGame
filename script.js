@@ -1,7 +1,7 @@
 const gameContainer = document.getElementById("game"); //where the game is contained
 
 //Directory to all the image files
-const imgDirectory = '/Unit8-MemoryGameChallenge/FastFoodImages/';
+const imgDirectory = 'FastFoodImages/'; /*Had to change filepath to work on GitHub; July 8, 2024*/
 const backCard = 'BackOfRedPlayingCard.jpg';
 const IMAGES = [
   'Burger-King_Logo.png',
@@ -38,7 +38,7 @@ const numberOfCards = document.createElement('input');
 let roundCards; //rounding up odd numbers
 
 //Creates a new form for the user to enter the amount of cards to play
-function askForPlayingCards () {
+function askForPlayingCards() {
   //makes a new form and adds it to the page
   const newForm = document.createElement('form');
   newForm.classList.add('cards-menu');
@@ -63,7 +63,7 @@ function askForPlayingCards () {
 // here is a helper function to shuffle an array
 // it returns the same array with values shuffled
 // it is based on an algorithm called Fisher Yates if you want to research more
-function pickRandomImages(userCardCount,array) {
+function pickRandomImages(userCardCount, array) {
   let counter = userCardCount;
   //two arrays for making a pair of cards
   const randomImagesArray = [];
@@ -123,7 +123,7 @@ document.addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
     //Makes sure to reload only when the game is done
     if (inProgress === false) {
-      greaterThanFour = oddOrEvenNumberCards(); 
+      greaterThanFour = oddOrEvenNumberCards();
       //check if minimum card count is met
       if (!greaterThanFour) {
         return; //gets user to redo the card count
@@ -141,7 +141,7 @@ document.addEventListener('keypress', function (event) {
 });
 
 //checks the number the user entered is either even, odd, or even a number
-function oddOrEvenNumberCards () {
+function oddOrEvenNumberCards() {
   const input = document.querySelector('#number-cards');
   roundCards = Math.floor(parseInt(numberOfCards.value)); //rounds up odd numbers and makes them an integer
 
@@ -149,8 +149,8 @@ function oddOrEvenNumberCards () {
   if (roundCards < 4 || numberOfCards.value === "") {
     alert('Enter a even number of cards that greater than or equal to 4.');
     input.value = ''; //removes value from card count
-    return false; 
-  } 
+    return false;
+  }
   //rounds the odd numbers
   if (roundCards % 2 === 1) {
     alert('Rounding up to next highest even number');
@@ -160,7 +160,7 @@ function oddOrEvenNumberCards () {
 }
 
 //Starts the memory game
-function startGame () {
+function startGame() {
   const clearHighScoreButton = document.querySelector('.clear-highscore-button');
 
   //checks if the card count has been met
@@ -175,12 +175,12 @@ function startGame () {
 
   let maxCards = roundCards / 2; //number of cards (no pairs)
   hasGameStarted = true;
-  myScore.innerText = `Current Score \n ${score}`; 
+  myScore.innerText = `Current Score \n ${score}`;
   //removes elements from start menu
   startButton.remove();
   clearHighScoreButton.remove();
   playerForm.remove();
-  
+
   //begins to randomize the images and shuffles them
   let randomImages = pickRandomImages(maxCards, IMAGES);
   let shuffledImages = shuffle(randomImages);
@@ -220,7 +220,7 @@ function handleCardClick(event) {
 
     //Flip card to the picture
     event.target.classList.toggle('back');
-    const imageSrc= event.target.className; //Saves img source to show
+    const imageSrc = event.target.className; //Saves img source to show
     if (event.target.classList.toggle('front')) {
       event.target.src = imgDirectory + imageSrc;
     }
@@ -228,7 +228,7 @@ function handleCardClick(event) {
     cardCount++; //Adds number of cards picked
     score++; //Adds to score
     myScore.innerText = `Current Score \n ${score}`; //Displays user score
-    
+
     //Checks if player has pick two cards
     if (cardCount >= twoCardsOnly) {
       matchState = true; //check cards state
@@ -236,13 +236,13 @@ function handleCardClick(event) {
       cardCount = 0;//Resets card count for next pair
       return;
     }
-    card1sClass = event.target.className; 
+    card1sClass = event.target.className;
     event.target.classList.toggle('first-card');
   }
 }
 
 //checks the two cards to see if its a match or not
-function checkForMatch (event, firstCard) {
+function checkForMatch(event, firstCard) {
   let Card1 = document.querySelector('.first-card');
   // console.log('First:', Card1);
   // console.log('Second:', event.target);
@@ -279,7 +279,7 @@ function checkForMatch (event, firstCard) {
 }
 
 //checks if the all the cards have been matched
-function isGameOver () {
+function isGameOver() {
   totalCardMatches--; //subtract total card amount when a match is found
 
   //if all cards are found, the game ends
@@ -294,7 +294,7 @@ function isGameOver () {
     playAgainButton.innerText = 'Play Again';
     playAgainButton.classList.add('play-again-button');
     playAgainButton.addEventListener('click', resettingGame);
-    
+
     //makes the card count form again
     document.body.appendChild(winnerText);
     askForPlayingCards();
@@ -305,7 +305,7 @@ function isGameOver () {
     const myHighscore = localStorage.getItem('highScore');
 
     //Replace highscore if the score is lower
-    if (score < myHighscore || myHighscore === null || myHighscore === '0'){
+    if (score < myHighscore || myHighscore === null || myHighscore === '0') {
       localStorage.setItem('highScore', score);
     }
 
@@ -339,7 +339,7 @@ function resettingGame(event) {
   //Clears the scores from the screen
   myScore.innerText = '';
   highScore.innerText = '';
-  
+
   startGame(); //Starts another game
   retrieveHighscore(); //gets the highscore 
 }
@@ -356,7 +356,7 @@ function retrieveHighscore() {
 }
 
 //creates a clear highscore button
-function createClearHighScoreButton () {
+function createClearHighScoreButton() {
   const clearHighScoreButton = document.createElement('button');
   clearHighScoreButton.innerText = 'Clear Highscore';
   clearHighScoreButton.classList.add('clear-highscore-button');
